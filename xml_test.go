@@ -12,7 +12,7 @@ func TestXmlHeader(t *testing.T) {
 }
 
 func TestNewMapXml(t *testing.T) {
-	x := []byte(`<root2><newtag>something more</newtag><list><item>1</item><item>2</item></list></root2>`)
+	x := []byte(`<root2><newtag attr="foo">something more</newtag><list><item>1</item><item>2</item></list></root2>`)
 
 	mv, merr := NewMapXml(x)
 	if merr != nil {
@@ -82,10 +82,10 @@ func TestXmlWriter(t *testing.T) {
 
 	raw, err := mv.XmlWriterRaw(w, "myRootTag")
 	if err != nil {
-		t.Fatal("err:",err.Error())
+		t.Fatal("err:", err.Error())
 	}
 
-	b := make([]byte,w.Len())
+	b := make([]byte, w.Len())
 	_, err = w.Read(b)
 	if err != nil {
 		t.Fatal("err:", err.Error())
