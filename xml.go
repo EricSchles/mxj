@@ -161,7 +161,7 @@ func xmlToTreeParser(skey string, a []xml.Attr, p *xml.Decoder) (*node, error) {
 			for _, v := range a {
 				na := new(node)
 				na.attr = true
-				na.key = `-` + v.Name.Local
+				na.key = v.Name.Local
 				na.val = v.Value
 				n.nodes = append(n.nodes, na)
 			}
@@ -182,7 +182,7 @@ func xmlToTreeParser(skey string, a []xml.Attr, p *xml.Decoder) (*node, error) {
 					for _, v := range tt.Attr {
 						na := new(node)
 						na.attr = true
-						na.key = `-` + v.Name.Local
+						na.key = v.Name.Local
 						na.val = v.Value
 						n.nodes = append(n.nodes, na)
 					}
